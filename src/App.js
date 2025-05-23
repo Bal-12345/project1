@@ -1,20 +1,15 @@
 
-import React,{useState} from 'react'
+import React from 'react'
 
 const A = ({node}) =>{ 
-  const[is,setIs]=useState(false)
-  const style={
-    background:is?'white':'blue',
-    color:is?'red':'white'
-  }
+  
+  
   return (
     
     <li>
-      <span onClick={()=>setIs(!is)}style={style}>
-        {node.children?(is?'\u25BC':'\u25B6'):''}
         {node.name}
-      </span>
-      {node.children && is && (
+    
+      {node.children && (
         <ul>
           {node.children.map(k=>(
             <A key={k.id} node={k}/>
@@ -67,9 +62,13 @@ const App = () => {
 
       ]}
      ]
+     const style={
+    background:'black',
+    color:'blue'
+  }
 
   return (
-    <div>
+    <div style={style}>
       <h1>Family Tree</h1>
     <ul>
       {data.map(i=>(
